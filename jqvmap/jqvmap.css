@@ -48,6 +48,7 @@
 .jqvmap-region
 {
   cursor: pointer;
+  color: red;
 }
 .jqvmap-ajax_response
 {

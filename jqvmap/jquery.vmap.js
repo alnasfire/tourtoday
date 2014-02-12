@@ -53,13 +53,13 @@
       selectedRegions: null,
       multiSelectRegion: false
     }, map = this.data('mapObject');
-
+    
     if (options === 'addMap') {
-      WorldMap.maps[arguments[1]] = arguments[2];
-    } else if (options === 'set' && apiParams[arguments[1]]) {
+      WorldMap.maps[arguments[1]] = arguments[2];      
+    } else if (options === 'set' && apiParams[arguments[1]]) {      
       map['set' + arguments[1].charAt(0).toUpperCase() + arguments[1].substr(1)].apply(map, Array.prototype.slice.call(arguments, 2));
     } else if (typeof options === 'string' &&
-               typeof map[options] === 'function') {
+               typeof map[options] === 'function') {      
       return map[options].apply(map, Array.prototype.slice.call(arguments, 1));
     } else {
       $.extend(defaultParams, options);
@@ -68,14 +68,13 @@
 
       map = new WorldMap(defaultParams);
 
-      this.data('mapObject', map);
-
+      this.data('mapObject', map);      
       for (var e in apiEvents) {
         if (defaultParams[e]) {
           this.bind(apiEvents[e] + '.jqvmap', defaultParams[e]);
         }
       }
-    }
+    }      
   };
 
   var VectorCanvas = function (width, height, params) {
@@ -357,7 +356,7 @@
   };
 
   var WorldMap = function (params) {
-    params = params || {};
+    params = params || {};    
     var map = this;
     var mapData = WorldMap.maps[params.map];
 
@@ -494,7 +493,7 @@
         }
       });
     }
-
+    
     this.setColors(params.colors);
 
     this.canvas.canvas.appendChild(this.rootGroup);
@@ -502,9 +501,9 @@
     this.applyTransform();
 
     this.colorScale = new ColorScale(params.scaleColors, params.normalizeFunction, params.valueMin, params.valueMax);
-
+    
     if (params.values) {
-      this.values = params.values;
+      this.values = params.values;      
       this.setValues(params.values);
     }
 
@@ -594,6 +593,12 @@
           colors[cc] = this.color;
         }
       }
+
+      //-------Here change colors of countries
+      // debugger;
+      colors['br']='#FF0000';
+      //-------
+
       this.setColors(colors);
       this.values = values;
     },
