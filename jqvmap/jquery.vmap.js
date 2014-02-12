@@ -600,7 +600,7 @@
 
       //-------Here change colors of countries
       // debugger;
-      colors['br']='#FF0000';
+      // colors['br']='#FF0000';
       //-------
 
       this.setColors(colors);
