@@ -422,6 +422,10 @@
       jQuery(this.rootGroup).append(path);
     }
 
+    //--------
+    // debugger;
+    //--------
+
     jQuery(params.container).delegate(this.canvas.mode == 'svg' ? 'path' : 'shape', 'mouseover mouseout', function (e) {
       var path = e.target,
       code = e.target.id.split('_').pop(),
