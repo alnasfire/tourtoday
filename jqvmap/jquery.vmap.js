@@ -34,7 +34,7 @@
     onRegionSelect: 'regionSelect',
     onRegionDeselect: 'regionDeselect'
   };
-
+  
   $.fn.vectorMap = function (options) {
 
     var defaultParams = {
@@ -53,7 +53,7 @@
       selectedRegions: null,
       multiSelectRegion: false
     }, map = this.data('mapObject');
-    
+
     if (options === 'addMap') {
       WorldMap.maps[arguments[1]] = arguments[2];      
     } else if (options === 'set' && apiParams[arguments[1]]) {      
@@ -387,6 +387,21 @@
       map.applyTransform();
     });
 
+    //-------Playing with map zoom actions
+    // jQuery(window).click(function(){      
+    //   map.zoomIn();
+    // });
+
+    jQuery(window).bind('mousewheel', function(e){
+        if(e.originalEvent.wheelDelta /120 > 0) {
+            map.zoomIn();
+        }
+        else{
+            map.zoomOut();
+        }
+    });
+    //-------
+
     this.canvas = new VectorCanvas(this.width, this.height, params);
     params.container.append(this.canvas.canvas);
 
@@ -537,6 +552,8 @@
 
     WorldMap.mapIndex++;
   };
+
+
 
   WorldMap.prototype = {
     transX: 0,
