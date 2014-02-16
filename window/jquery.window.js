@@ -1651,7 +1651,7 @@ $.Window = (function()  {
 				if( caller.get(0)._minWinData == null ) {
 					// create the minimized window relative data
 					caller.get(0)._minWinData = {
-						long: setting.minWinLong,
+						//long: setting.minWinLong, comment by nasgor
 						storage: []
 					};
 				}
